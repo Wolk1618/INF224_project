@@ -21,7 +21,8 @@ class Photo : public Media {
     int get_height() const {return height;}
     void set_width(int w) {width = w;}
     void set_height(int h) {height = h;}
-    void print_values(ostream& stream) const { Media::print_values(stream); stream << "width : " << width << " \nheight : " << height << "\n" << std::endl;}    
+    void print_values(ostream& stream) const { Media::print_values(stream); stream << " width : " << width << " height : " << height;}    
+    //void print_values(ostream& stream) const { Media::print_values(stream); stream << "width : " << width << " \nheight : " << height << "\n" << std::endl;}    
     void play_media() const { system(("imagej " + pathname + "/" + name + " &").c_str()); }
 };
 

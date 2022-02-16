@@ -14,7 +14,7 @@ PROG = myprog
 #
 # Fichiers sources (NE PAS METTRE les .h ni les .o seulement les .cpp)
 #
-SOURCES = main.cpp Media.cpp Film.cpp Master.cpp
+SOURCES = main.cpp Media.cpp Film.cpp Master.cpp tcpserver.cpp ccsocket.cpp
 
 #
 # Fichiers objets (ne pas modifier sauf si l'extension n'est pas .cpp)
@@ -43,7 +43,7 @@ LDFLAGS =
 # Librairies a utiliser
 # Exemple: LDLIBS = -L/usr/local/qt/lib -lqt
 #
-LDLIBS = 
+LDLIBS = -lpthread 
 
 
 ##########################################

@@ -77,12 +77,17 @@ int main(int argc, const char* argv[])
 #ifdef VERSION_2
 
 
-
+const string path = "~/Documents/telecom/INF224/data";
 const int PORT = 3331;
 
 
 int main(int argc, char* argv[])
 {
+  Master *box = new Master();
+
+  VideoPtr jb = box->createVideo("Frambot", "conf-paul-frambot.mp4", path, 5);
+  PhotoPtr mariage = box->createPhoto("Alumneye", "logo-long.png", path, 3, 4);
+
   // cree le TCPServer
   auto* server =
   new TCPServer( [&](string const& request, string& response) {
@@ -90,8 +95,31 @@ int main(int argc, char* argv[])
     // the request sent by the client to the server
     cout << "request: " << request << endl;
 
+    stringstream buffer, buffer_out;
+    string command, name;
+    buffer << request << endl;
+    buffer >> command >> name;
+
+    
+    //cout << "test :" << command << "," << name << endl;
+
+    if(command == "searchO") {
+      box->printObject(name, buffer_out);
+      response = buffer_out.str();
+    }
+
+    if(command == "searchG") {
+      box->printGroup(name, buffer_out);
+      response = buffer_out.str();
+    }
+
+    if(command == "play") {
+      box->play(name);
+      response = buffer_out.str();
+    }
+  
     // the response that the server sends back to the client
-    response = "RECEIVED: " + request;
+    // response = "RECEIVED: " + request;
 
     // return false would close the connecytion with the client
     return true;

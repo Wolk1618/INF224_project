@@ -24,14 +24,23 @@ class Film : public Video {
     void print_values(ostream& stream) const {
         Video::print_values(stream);
         stream
-        << "number of chapters : " << number_chapter << "\n"
-        << "duration of chapters : \n"
-        << std::endl;
+        << " number of chapters : " << number_chapter
+        << " duration of chapters : ";
         for(int i = 0; i < number_chapter; i++) {
             stream
-            << "chapter " << i << " : " << chapters[i] << "\n"
-            << std::endl;
+            << " chapter " << i << " : " << chapters[i];
         }
+
+        //Video::print_values(stream);
+        //stream
+        //<< "number of chapters : " << number_chapter << "\n"
+        //<< "duration of chapters : \n"
+        //<< std::endl;
+        //for(int i = 0; i < number_chapter; i++) {
+        //    stream
+        //    << "chapter " << i << " : " << chapters[i] << "\n"
+        //    << std::endl;
+        //}
     }
 
 };

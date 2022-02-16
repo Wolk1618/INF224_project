@@ -1,19 +1,19 @@
 #include "Master.h"
 
-PhotoPtr Master::createPhoto(string name) {
-    PhotoPtr photo(new Photo());
+PhotoPtr Master::createPhoto(string name, string photo_name, string pathname, int width, int height) {
+    PhotoPtr photo(new Photo(photo_name, pathname, width, height));
     medias[name] = photo;
     return photo;
 }
 
-VideoPtr Master::createVideo(string name) {
-    VideoPtr video(new Video());
+VideoPtr Master::createVideo(string name, string video_name, string pathname, int duration) {
+    VideoPtr video(new Video(video_name, pathname, duration));
     medias[name] = video;
     return video;
 }
 
-FilmPtr Master::createFilm(string name) {
-    FilmPtr film(new Film());
+FilmPtr Master::createFilm(string name, string film_name, string pathname, int duration, int number_chapter, int * _chapters) {
+    FilmPtr film(new Film(film_name, pathname, duration, number_chapter, _chapters));
     medias[name] = film;
     return film;
 }
@@ -24,28 +24,31 @@ GroupPtr Master::createGroup(string name) {
     return group;
 }
 
-void Master::printObject(string name) const {
+void Master::printObject(string name, ostream & stream) const {
     auto it = medias.find(name);
     if(it == medias.end()) {
-        cout << "No media named " << name << " !\n" << endl;
+        stream << "No media named " << name << " !";
+        //stream << "No media named " << name << " !\n" << endl;
     } else {
-        it->second->print_values(cout);
+        it->second->print_values(stream);
     }
 }
 
-void Master::printGroup(string name) const {
+void Master::printGroup(string name, ostream & stream) const {
     auto it = groups.find(name);
     if(it == groups.end()) {
-        cout << "No group named " << name << " !\n" << endl;
+        stream << "No group named " << name << " !";
+        //stream << "No group named " << name << " !\n" << endl;
     } else {
-        it->second->print_values(cout);
+        it->second->print_values(stream);
     }
 }
 
 void Master::play(string name) const {
     auto it = medias.find(name);
     if(it == medias.end()) {
-        cout << "No media named " << name << " !\n" << endl;
+        cout << "No media named " << name << " !";
+        //stream << "No media named " << name << " !\n" << endl;
     } else {
         it->second->play_media();
     }

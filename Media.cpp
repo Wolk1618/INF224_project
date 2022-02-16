@@ -18,7 +18,11 @@ void Media::set_pathname(string _pathname) {
 
 void Media::print_values(ostream& stream) const {
     stream
-    << "name : " << name << "\n"
-    << "pathname : " << pathname
-    << std::endl;
+    << " name : " << name
+    << " pathname : " << pathname;
+    
+    //stream
+    //<< "name : " << name << "\n"
+    //<< "pathname : " << pathname
+    //<< std::endl;
 }

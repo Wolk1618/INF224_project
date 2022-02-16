@@ -21,8 +21,9 @@ class Video : public Media {
     void set_duration(int d) {duration = d;}
     void print_values(ostream& stream) const {
         Media::print_values(stream);
-        stream << "duration : " << duration << "\n"
-        << std::endl;
+        stream << " duration : " << duration;
+        //stream << "duration : " << duration << "\n"
+        //<< std::endl;
     } //il faut rajouter l'impression de la durée
     void play_media() const { system(("mpv " + pathname + "/" + name + " &").c_str()); }
 
