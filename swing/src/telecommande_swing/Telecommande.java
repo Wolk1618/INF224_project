@@ -14,6 +14,10 @@ public class Telecommande extends JFrame {
 	JButton button2;
 	JButton button3;
 	
+	AbstractAction action1;
+	AbstractAction action2;
+	AbstractAction action3;
+	
 	public static void main(String[] args) {
 		new Telecommande();
 	}
@@ -28,6 +32,22 @@ public class Telecommande extends JFrame {
 		add(scroll, BorderLayout.CENTER);
 		
 		JPanel buttonPanel = new JPanel();
+		JMenuBar menus = new JMenuBar();
+		JMenu menuD = new JMenu("Menu");
+		JToolBar barre = new JToolBar();
+		
+		barre.add(new ActionBonnie("Bonnie"));
+		barre.add(new ActionClyde("Clyde"));
+		barre.add(new ActionClose("Close"));
+		
+		menuD.add(new ActionBonnie("Bonnie"));
+		menuD.add(new ActionClyde("Clyde"));
+		menuD.add(new ActionClose("Close"));
+		
+		menus.add(menuD);
+		menus.add(barre);
+		setJMenuBar(menus);
+		
 		
 		button1.addActionListener(new BonnieListener());
 		button2.addActionListener(new ClydeListener());
@@ -57,6 +77,43 @@ public class Telecommande extends JFrame {
 	}
 	
 	class CloseListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			System.exit(0);	
+		}
+	}
+	
+	class ActionBonnie extends AbstractAction {
+		private static final long serialVersionUID = 1L;
+		
+		public ActionBonnie(String name) {
+			super(name);
+		}
+		
+		public void actionPerformed(ActionEvent e) {
+			text.append("Bonnie\n");		
+		}
+		
+	}
+	
+	class ActionClyde extends AbstractAction {
+		private static final long serialVersionUID = 1L;
+		
+		public ActionClyde(String name) {
+			super(name);
+		}
+		
+		public void actionPerformed(ActionEvent e) {
+			text.append("Clyde\n");		
+		}
+	}
+	
+	class ActionClose extends AbstractAction {
+		private static final long serialVersionUID = 1L;
+		
+		public ActionClose(String name) {
+			super(name);
+		}
+		
 		public void actionPerformed(ActionEvent e) {
 			System.exit(0);	
 		}
