@@ -30,7 +30,7 @@ int main(int argc, const char* argv[])
     cout 
     << "Hello brave new world"
     << endl;
-    string path = "~/Documents/telecom/INF224/data";
+    string path = "~/Documents/telecom/INF224/cpp/data";
     /*
     Media ** tab = new Media*[10];
     tab[0] = new Photo("logo-long.png", path, 3, 4);
@@ -77,7 +77,7 @@ int main(int argc, const char* argv[])
 #ifdef VERSION_2
 
 
-const string path = "~/Documents/telecom/INF224/data";
+const string path = "~/Documents/telecom/INF224/cpp/data";
 const int PORT = 3331;
 
 
