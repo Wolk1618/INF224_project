@@ -61,11 +61,9 @@ void Master::deleteObject(string name) {
     } else {
         for(auto it_group : groups) {
             GroupPtr group = it_group.second;
-            _List_iterator<MediaPtr> begin = group->begin();
-            _List_iterator<MediaPtr> end = group->end();
             MediaPtr val = it_media->second;
-            auto found_it =find(begin, end, val);
-            if(found_it != end) {
+            auto found_it =find(group->begin(), group->end(), val);
+            if(found_it != group->end()) {
                 group->erase(found_it);
             }
         }
